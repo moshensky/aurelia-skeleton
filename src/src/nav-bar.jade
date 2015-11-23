@@ -1,0 +1,33 @@
+template
+  nav.navbar.navbar-default.navbar-fixed-top(role="navigation")
+    div.container-fluid(show.bind="isUserLoggedIn")
+      //form.navbar-form.navbar-left(role="search")
+        div.form-group
+          div.input-group
+            div.input-group-addon
+              i.fa.fa-barcode
+            input.form-control(type="text", placeholder="Търси", value.bind="barcode", focus.bind="hasFocus")
+        button.btn.btn-default(type="submit", click.delegate="search()")
+          i.fa.fa-search
+
+      ul.nav.navbar-nav
+        li(repeat.for="navModel of router.navigation" class="${ navModel.isActive ? 'active' : '' }", if.one-way="$parent.checkAccess(navModel)")
+          a(href.bind="navModel.href", title.bind="navModel.title")
+            i.fa(class.bind="navModel.config.faicon", if.bind="navModel.config.faicon") &nbsp;
+            span(if.bind="!navModel.config.iconOnly") ${navModel.title}
+
+      p.navbar-text.pull-right(if.bind="isUserLoggedIn")
+        a(href.bind="userSettingsUrl", mouseover.trigger="hoverSettings(true)", mouseout.trigger="hoverSettings(false)")
+          i.fa.fa-cog(class="${hovered ? 'fa-spin' : ''}")
+        | &nbsp;
+
+        span ${userName}
+        | &nbsp;
+        a(href="#", title.bind="label.logout", click.delegate="logout()")
+          i.fa.fa-arrow-circle-o-right.fa-lg
+        | &nbsp;
+        | &nbsp;
+        | &nbsp;
+        i.fa.fa-spinner.fa-pulse.fa-2x(show.bind="router.isNavigating")
+        | &nbsp;
+
