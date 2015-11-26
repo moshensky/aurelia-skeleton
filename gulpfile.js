@@ -26,28 +26,28 @@ function buildAurelia(appPath) {
     process.chdir(appPath);
     var spawn = require('child_process').spawn;
     var sp = new SpawnProc(spawn);
-    //sp.npm('-v')
-    sp.npm('install')
+    sp.npm('-v')
+    //sp.npm('install')
       //.then(function () {
       //  return gulp.src('src/main.js')
       //    .pipe(gulp.dest('./backup'))
       //})
-      .then(function () {
-        return replaceHttpServicesLinks('src');
-        //return replaceHttpServicesLinks(configFile, conf);
-      })
-      .then(function () {
-        return sp.jspm('install')
-      })
-      .then(function () {
-        return sp.gulp('compile-jade-index');
-      })
-      .then(function () {
-        return sp.gulp('compile-less');
-      })
-      .then(function () {
-        return sp.gulp('compile-jade');
-      })
+      //.then(function () {
+      //  return replaceHttpServicesLinks('src');
+      //  //return replaceHttpServicesLinks(configFile, conf);
+      //})
+      //.then(function () {
+      //  return sp.jspm('install')
+      //})
+      //.then(function () {
+      //  return sp.gulp('compile-jade-index');
+      //})
+      //.then(function () {
+      //  return sp.gulp('compile-less');
+      //})
+      //.then(function () {
+      //  return sp.gulp('compile-jade');
+      //})
       .then(function () {
         return sp.gulp('build', '--configuration', conf);
       })
@@ -81,9 +81,9 @@ function buildAurelia(appPath) {
       .then(function () {
         return gulp.src('config.js').pipe(gulp.dest(output));
       })
-      .then(function () {
-        return sp.gulp('unbundle');
-      })
+      //.then(function () {
+      //  return sp.gulp('unbundle');
+      //})
       //.then(function () {
       //  return gulp.src('./backup/main.js')
       //    .pipe(gulp.dest('src'))
