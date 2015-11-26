@@ -2,8 +2,8 @@
   "bundles": {
     "dist/app-build": {
       "includes": [
-        "[*]",
-        "*.html!text",
+        "[**/*]",
+        "**/*.html!text",
         "*.css!text"
       ],
       "options": {
@@ -25,26 +25,7 @@
         "aurelia-history-browser",
         "aurelia-logging-console",
         "bootstrap",
-        "bootstrap/css/bootstrap.css!text",
-        "aurelia-validation/**/*",
-        "aurelia-i18n",
-        "moshensky/aurelia-bs-grid",
-        "moshensky/aurelia-bs-grid/**/*",
-        "moshensky/aurelia-bs-grid/**/*.html!text",
-        "moshensky/aurelia-bs-grid/**/*.css!text",
-        "aurelia-custom-common-files",
-        "aurelia-custom-common-files/**/*",
-        "aurelia-custom-common-files/**/*.html!text",
-        "aurelia-custom-common-files/**/*.css!text",
-        "service",
-        "service/**/*",
-        "service/**/*.css!text",
-        "select2/css/select2.css!text",
-        "bluebird",
-        "Eonasdan/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css!text",
-        "text",
-        "moment/locale/bg.js",
-        "font-awesome/css/font-awesome.css!text"
+        "bootstrap/css/bootstrap.css!text"
       ],
       "options": {
         "inject": true,
@@ -53,3 +34,4 @@
     }
   }
 }
+
