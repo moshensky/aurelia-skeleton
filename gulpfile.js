@@ -17,7 +17,7 @@ gulp.task('build:frontend', function () {
 });
 
 function buildAurelia(appPath) {
-  var output = 'scholarships_webapp';
+  var output = args['destination-folder'];
   del([output], {
     force: true
   }, function (err, deletedFiles) {
@@ -28,12 +28,13 @@ function buildAurelia(appPath) {
     var sp = new SpawnProc(spawn);
     //sp.npm('-v')
     sp.npm('install')
-      .then(function () {
-        return gulp.src('src/main.js')
-          .pipe(gulp.dest('./backup'))
-      })
+      //.then(function () {
+      //  return gulp.src('src/main.js')
+      //    .pipe(gulp.dest('./backup'))
+      //})
       .then(function () {
         return replaceHttpServicesLinks('src');
+        //return replaceHttpServicesLinks(configFile, conf);
       })
       .then(function () {
         return sp.jspm('install')
@@ -57,8 +58,8 @@ function buildAurelia(appPath) {
         return gulp.src('assets/**/*').pipe(gulp.dest(output + '/assets'));
       })
       .then(function () {
-        //return gulp.src(['dist/aurelia.js', 'dist/app-build.js']).pipe(gulp.dest(output + '/dist'));
-        return gulp.src(['dist/**/*.js']).pipe(gulp.dest(output + '/dist'));
+        //return gulp.src(['dist/**/*.js']).pipe(gulp.dest(output + '/dist'));
+        return gulp.src(['dist/aurelia.js', 'dist/app-build.js']).pipe(gulp.dest(output + '/dist'));
       })
       .then(function () {
         return gulp.src('jspm_packages/system.js').pipe(gulp.dest(output + '/jspm_packages'));
@@ -83,12 +84,17 @@ function buildAurelia(appPath) {
       .then(function () {
         return sp.gulp('unbundle');
       })
-      .then(function () {
-        return gulp.src('./backup/main.js')
-          .pipe(gulp.dest('src'))
-      })
-      .then(function () {
-        return del(['backup']);
+      //.then(function () {
+      //  return gulp.src('./backup/main.js')
+      //    .pipe(gulp.dest('src'))
+      //})
+      //.then(function () {
+      //  return del(['backup']);
+      //});
+      .catch(function (error) {
+        console.log('############ ERROR ##########');
+        console.log(error);
+        console.log('############ END ERROR ##########');
       });
   });
 }
@@ -181,14 +187,33 @@ var replaceHttpServicesLinks = function (filePath) {
 
   var serviceHostUrlToReplace = 'serviceHost: \'' + serviceApitUrl + '\',';
   var authHostUrlToReplace = 'authHost: \'' + securityUrl + '\',';
-  var eStudentHostUrlToReplace = 'hosts[HostConsts.eStudent] = \'' + eStudentApiUrl + '\';';
+  var eStudentHostUrlToReplace = 'hosts[HostConsts.cssSystem] = \'' + eStudentApiUrl + '\';';
 
   return gulp.src(filePath + '/main.js')
     .pipe(replace(/serviceHost:.*/, serviceHostUrlToReplace))
     .pipe(replace(/authHost:.*/, authHostUrlToReplace))
-    .pipe(replace(/hosts\[HostConsts.eStudent\].*/, eStudentHostUrlToReplace))
+    .pipe(replace(/hosts\[HostConsts.cssSystem\].*/, eStudentHostUrlToReplace))
     .pipe(gulp.dest(filePath));
 };
 
 
 
+var browserSync = require('browser-sync');
+
+// this task utilizes the browsersync plugin
+// to create a dev server instance
+// at http://localhost:9000
+gulp.task('serve', function(done) {
+  browserSync({
+    online: false,
+    open: false,
+    port: 9000,
+    server: {
+      baseDir: ['./dist'],
+      middleware: function(req, res, next) {
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        next();
+      }
+    }
+  }, done);
+});
