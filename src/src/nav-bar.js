@@ -19,7 +19,7 @@ export class NavBar {
 
     this.label = {
       logout: i18n.tr('navBar.logout')
-    }
+    };
   }
 
   get isUserLoggedIn() {
@@ -31,7 +31,7 @@ export class NavBar {
   }
 
   search() {
-    console.warn('not implemented: ' + this.barcode);
+    throw new Error('not implemented: ' + this.barcode);
   }
 
   get userSettingsUrl() {

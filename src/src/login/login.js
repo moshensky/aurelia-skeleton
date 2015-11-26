@@ -7,10 +7,14 @@ import {Validation, ensure} from 'aurelia-validation';
 import {I18N} from 'aurelia-i18n';
 
 @inject(Validation, Logger, Session, Router, Http, I18N)
-export class Login{
-  @ensure((it) => { it.isNotEmpty().hasLengthBetween(3,20) })
+export class Login {
+  @ensure((it) => {
+    it.isNotEmpty().hasLengthBetween(3, 20);
+  })
   email = '';
-  @ensure((it) => { it.isNotEmpty().hasLengthBetween(3,20) })
+  @ensure((it) => {
+    it.isNotEmpty().hasLengthBetween(3, 20);
+  })
   password = '';
 
   constructor(validation, logger, session, router, http, i18n) {
@@ -23,19 +27,17 @@ export class Login{
   }
 
   login() {
-    var self = this;
-
     this.validation.validate().then(() => {
       this.http.loginResourceOwner(this.email, this.password, 'planner')
         .then(_ => {
-          self.logger.success({
-            message: self.i18n.tr('app:login.loggedInSuccessful')
+          this.logger.success({
+            message: this.i18n.tr('app:login.loggedInSuccessful')
           });
           this.router.navigateToRoute('home');
         })
         .catch(_ => {
-          self.logger.error({
-            message: self.i18n.tr('app:login.loggedInUnsuccessful')
+          this.logger.error({
+            message: this.i18n.tr('app:login.loggedInUnsuccessful')
           });
         });
     });

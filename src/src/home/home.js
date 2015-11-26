@@ -3,7 +3,6 @@ import {inject} from 'aurelia-framework';
 import {Validation} from 'aurelia-validation';
 import {I18N} from 'aurelia-i18n';
 import {Router} from 'aurelia-router';
-import moment from 'moment';
 
 @inject(Http, Logger, Validation, I18N, Router)
 export class CreateEditStudentVM {

@@ -1,6 +1,4 @@
 import 'bootstrap';
-import {I18N} from 'aurelia-i18n';
-import Promise from 'bluebird';
 import {HostConsts} from './libs/host-consts';
 
 export function configure(aurelia) {

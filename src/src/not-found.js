@@ -1,3 +1,4 @@
-﻿export class NotFound{
-    heading = 'Route not found!';
+﻿export class NotFound {
+  heading = 'Route not found!';
 }
+
