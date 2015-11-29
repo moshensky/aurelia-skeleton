@@ -13,7 +13,7 @@ export function configure(aurelia) {
       config.useLocale('bg-BG');
     })
     .plugin('aurelia-i18n', (instance) => {
-      //http://i18next.com/pages/doc_init.html
+      // adapt options to your needs (see http://i18next.com/pages/doc_init.html)
       instance.setup({
         detectFromHeaders: false,
         lng: 'bg',
@@ -21,7 +21,9 @@ export function configure(aurelia) {
         ns: 'app',
         resGetPath: 'assets/locales/__lng__/__ns__.json',
         attributes: ['t', 'i18n'],
-        useCookie: false
+        useCookie: false,
+        getAsync : false,
+        debug: false
       });
     })
     .plugin('aurelia-dialog')

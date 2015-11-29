@@ -16,6 +16,8 @@
         "aurelia-animator-css",
         "aurelia-bootstrapper",
         "aurelia-dialog",
+        "aurelia-dialog/**/*.html!text",
+        "aurelia-dialog/**/*.css!text",
         "aurelia-fetch-client",
         "aurelia-framework",
         "aurelia-history-browser",
@@ -37,7 +39,17 @@
         "aurelia-custom-common-files",
         "aurelia-custom-common-files/**/*",
         "aurelia-custom-common-files/**/*.html!text",
-        "aurelia-custom-common-files/**/*.css!text"
+        "aurelia-custom-common-files/**/*.css!text",
+        "service",
+        "service/**/*",
+        "service/**/*.css!text",
+        "text",
+        "select2/css/select2.css!text",
+        "bluebird",
+        "Eonasdan/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css!text",
+        "moment/locale/bg.js",
+        "font-awesome/css/font-awesome.css!text",
+        "CodeSeven/toastr/build/toastr.min.css!text"
       ],
       "options": {
         "inject": true,
