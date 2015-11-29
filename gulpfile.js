@@ -26,28 +26,27 @@ function buildAurelia(appPath) {
     process.chdir(appPath);
     var spawn = require('child_process').spawn;
     var sp = new SpawnProc(spawn);
-    sp.npm('-v')
-    //sp.npm('install')
-      //.then(function () {
-      //  return gulp.src('src/main.js')
-      //    .pipe(gulp.dest('./backup'))
-      //})
-      //.then(function () {
-      //  return replaceHttpServicesLinks('src');
-      //  //return replaceHttpServicesLinks(configFile, conf);
-      //})
-      //.then(function () {
-      //  return sp.jspm('install')
-      //})
-      //.then(function () {
-      //  return sp.gulp('compile-jade-index');
-      //})
-      //.then(function () {
-      //  return sp.gulp('compile-less');
-      //})
-      //.then(function () {
-      //  return sp.gulp('compile-jade');
-      //})
+    //sp.npm('-v')
+    sp.npm('install')
+      .then(function () {
+        return gulp.src('src/main.js')
+          .pipe(gulp.dest('./backup'));
+      })
+      .then(function () {
+        return replaceHttpServicesLinks('src');
+      })
+      .then(function () {
+        return sp.jspm('install');
+      })
+      .then(function () {
+        return sp.gulp('compile-jade-index');
+      })
+      .then(function () {
+        return sp.gulp('compile-less');
+      })
+      .then(function () {
+        return sp.gulp('compile-jade');
+      })
       .then(function () {
         return sp.gulp('build', '--configuration', conf);
       })
@@ -58,7 +57,6 @@ function buildAurelia(appPath) {
         return gulp.src('assets/**/*').pipe(gulp.dest(output + '/assets'));
       })
       .then(function () {
-        //return gulp.src(['dist/**/*.js']).pipe(gulp.dest(output + '/dist'));
         return gulp.src(['dist/aurelia.js', 'dist/app-build.js']).pipe(gulp.dest(output + '/dist'));
       })
       .then(function () {
@@ -81,16 +79,16 @@ function buildAurelia(appPath) {
       .then(function () {
         return gulp.src('config.js').pipe(gulp.dest(output));
       })
-      //.then(function () {
-      //  return sp.gulp('unbundle');
-      //})
-      //.then(function () {
-      //  return gulp.src('./backup/main.js')
-      //    .pipe(gulp.dest('src'))
-      //})
-      //.then(function () {
-      //  return del(['backup']);
-      //});
+      .then(function () {
+        return sp.gulp('unbundle');
+      })
+      .then(function () {
+        return gulp.src('./backup/main.js')
+          .pipe(gulp.dest('src'))
+      })
+      .then(function () {
+        return del(['backup']);
+      })
       .catch(function (error) {
         console.log('############ ERROR ##########');
         console.log(error);
@@ -193,9 +191,9 @@ var replaceHttpServicesLinks = function (filePath) {
     .pipe(replace(/serviceHost:.*/, serviceHostUrlToReplace))
     .pipe(replace(/authHost:.*/, authHostUrlToReplace))
     .pipe(replace(/hosts\[HostConsts.cssSystem\].*/, eStudentHostUrlToReplace))
+    .pipe(replace(/\.developmentLogging\(\)/, ' '))
     .pipe(gulp.dest(filePath));
 };
-
 
 
 var browserSync = require('browser-sync');
