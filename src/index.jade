@@ -1,0 +1,17 @@
+﻿doctype html
+html
+  head
+    //base(href="http://localhost:9009")
+    title Студентско досие
+    meta(charset='utf-8')
+    link(rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon")
+    link(rel="stylesheet" type="text/css" href="styles/styles.css")
+  body(aurelia-app="main" style="background: #262626")
+    div.splash
+      // todo: i18n
+      div.message Контрол на достъп
+      img(src="assets/images/loader.gif")
+
+    script(src="jspm_packages/system.js")
+    script(src="config.js")
+    script System.import('aurelia-bootstrapper');

@@ -1,0 +1,12 @@
+﻿template
+    section
+        h2 ${'login.systemLogin' | t}
+
+        form(role="form" submit.delegate="login()" validate.bind="validation")
+            div.form-group
+                label(for="fn") ${'login.user' | t}
+                input.form-control(type="text" value.bind="email" id="fn" placeholder="${'login.user' | t}")
+            div.form-group
+                label(for="ln") ${'login.password' | t}
+                input.form-control(type="password" value.bind="password" id="ln" placeholder="${'login.password' | t}")
+            button.btn.btn-default(type="submit" disabled.bind="!validation.result.isValid") ${'login.login' | t}
