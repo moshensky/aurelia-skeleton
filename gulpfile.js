@@ -2,7 +2,6 @@ var Promise = require('bluebird');
 var colors = require('colors');
 var del = require('del');
 var gulp = require('gulp');
-var jshint = require('gulp-jshint');
 var replace = require('gulp-replace');
 require('shelljs/global');
 var mainConfig = require('./main-build-config');

@@ -1,6 +1,6 @@
 {
   "name": "aurelia-skeleton-navigation",
-  "version": "1.0.0-beta.1.0.1",
+  "version": "1.0.0-beta.1.0.2",
   "description": "A starter kit for building a standard navigation-style app with Aurelia.",
   "keywords": [
     "aurelia",
@@ -20,14 +20,14 @@
   },
   "scripts": {
     "test": "gulp test",
-    "e2e": "gulp serve e2e"
+    "e2e": "gulp serve webdriver-standalone e2e"
   },
   "devDependencies": {
     "aurelia-bundler": "^0.1.8",
     "aurelia-tools": "^0.1.3",
     "babel": "^5.8.23",
     "babel-eslint": "^4.1.3",
-    "browser-sync": "^1.8.1",
+    "browser-sync": "^2.10.0",
     "conventional-changelog": "0.0.11",
     "del": "^1.1.0",
     "gulp": "^3.8.10",
@@ -38,8 +38,8 @@
     "gulp-jade": "^1.1.0",
     "gulp-less": "^3.0.5",
     "gulp-notify": "^2.2.0",
-    "gulp-plumber": "^0.6.6",
-    "gulp-protractor": "^0.0.12",
+    "gulp-plumber": "^1.0.1",
+    "gulp-protractor": "1.0.0",
     "gulp-sourcemaps": "^1.3.0",
     "gulp-yuidoc": "^0.1.2",
     "isparta": "^3.1.0",
@@ -48,7 +48,7 @@
     "jspm": "^0.16.11",
     "karma": "^0.13.15",
     "karma-babel-preprocessor": "^5.2.1",
-    "karma-chrome-launcher": "^0.1.7",
+    "karma-chrome-launcher": "^0.2.1",
     "karma-coverage": "douglasduteil/karma-coverage#next",
     "karma-jasmine": "^0.3.5",
     "karma-jspm": "2.0.1-beta.2",
