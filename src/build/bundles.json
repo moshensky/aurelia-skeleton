@@ -13,25 +13,25 @@
     },
     "dist/aurelia": {
       "includes": [
-        "aurelia-animator-css",
-        "aurelia-bootstrapper",
-        "aurelia-dialog",
-        "aurelia-dialog/**/*.html!text",
-        "aurelia-dialog/**/*.css!text",
-        "aurelia-fetch-client",
         "aurelia-framework",
-        "aurelia-history-browser",
-        "aurelia-i18n",
-        "aurelia-loader-default",
-        "aurelia-logging-console",
+        "aurelia-bootstrapper",
+        "aurelia-fetch-client",
         "aurelia-router",
+        "aurelia-animator-css",
         "aurelia-templating-binding",
         "aurelia-templating-resources",
         "aurelia-templating-router",
-        "aurelia-validation",
-        "aurelia-validation/resources/bg-BG",
+        "aurelia-loader-default",
+        "aurelia-history-browser",
+        "aurelia-logging-console",
         "bootstrap",
         "bootstrap/css/bootstrap.css!text",
+        "aurelia-dialog",
+        "aurelia-dialog/**/*.html!text",
+        "aurelia-dialog/**/*.css!text",
+        "aurelia-validation",
+        "aurelia-validation/resources/bg-BG",
+        "aurelia-i18n",
         "moshensky/aurelia-bs-grid",
         "moshensky/aurelia-bs-grid/**/*",
         "moshensky/aurelia-bs-grid/**/*.html!text",
@@ -58,4 +58,3 @@
     }
   }
 }
-
