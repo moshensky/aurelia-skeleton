@@ -63,11 +63,11 @@ function buildAurelia(appPath) {
         return gulp.src('jspm_packages/system.js').pipe(gulp.dest(output + '/jspm_packages'));
       })
       .then(function () {
-        var pathToFonts = 'jspm_packages/npm/font-awesome@4.4.0/fonts';
+        var pathToFonts = 'jspm_packages/npm/font-awesome@4.5.0/fonts';
         return gulp.src(pathToFonts + '/*').pipe(gulp.dest(output + '/' + pathToFonts));
       })
       .then(function () {
-        var pathToFonts = 'jspm_packages/github/twbs/bootstrap@3.3.5/fonts';
+        var pathToFonts = 'jspm_packages/github/twbs/bootstrap@3.3.6/fonts';
         return gulp.src(pathToFonts + '/*').pipe(gulp.dest(output + '/' + pathToFonts));
       })
       .then(function () {
